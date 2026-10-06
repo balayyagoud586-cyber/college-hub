@@ -1,0 +1,2895 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MRECW | College Event Hub</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #f7f8fc;
+            color: #171717;
+        }
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+        section {
+            scroll-margin-top: 85px;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            width: 100%;
+            min-height: 82px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 10px 6%;
+
+            background: rgba(255, 255, 255, 0.97);
+
+            border-bottom: 1px solid #e8e8ee;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+
+            backdrop-filter: blur(15px);
+        }
+
+
+        /* REAL MRECW LOGO */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .college-logo {
+            width: 62px;
+            height: 62px;
+
+            object-fit: contain;
+
+            display: block;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h2 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 18px;
+            line-height: 1.2;
+
+            color: #181818;
+
+            max-width: 350px;
+        }
+
+        .logo-text span {
+            margin-top: 3px;
+
+            font-size: 11px;
+
+            color: #777;
+
+            letter-spacing: .8px;
+        }
+
+
+        /* NAVIGATION */
+
+        nav {
+            display: flex;
+            align-items: center;
+
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+
+            color: #555;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: #000;
+        }
+
+
+        /* NOTIFICATION */
+
+        .notification-btn {
+            position: relative;
+
+            border: none;
+
+            background: transparent;
+
+            font-size: 19px;
+
+            cursor: pointer;
+
+            color: #222;
+        }
+
+        #notificationCount {
+            position: absolute;
+
+            top: -8px;
+            right: -9px;
+
+            width: 17px;
+            height: 17px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #e63946;
+
+            color: white;
+
+            font-size: 9px;
+
+            font-weight: 700;
+        }
+
+
+        /* LOGIN */
+
+        .login-btn {
+            border: none;
+
+            background: #171717;
+
+            color: white;
+
+            padding: 11px 17px;
+
+            border-radius: 10px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            min-height: 590px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 90px 8%;
+
+            color: white;
+
+            background:
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(156, 124, 255, .22),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 10% 80%,
+                    rgba(0, 150, 255, .12),
+                    transparent 30%
+                ),
+
+                #101114;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-label {
+            display: inline-block;
+
+            padding: 10px 16px;
+
+            border: 1px solid rgba(255,255,255,.2);
+
+            border-radius: 30px;
+
+            color: #d8d8d8;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: clamp(45px, 7vw, 82px);
+
+            line-height: 1.02;
+
+            letter-spacing: -3px;
+        }
+
+        .hero h1 span {
+            display: block;
+
+            color: #a17cff;
+        }
+
+        .hero p {
+            margin-top: 25px;
+
+            max-width: 650px;
+
+            color: #bdbdbd;
+
+            font-size: 17px;
+
+            line-height: 1.7;
+        }
+
+
+        /* SEARCH */
+
+        .search-box {
+            margin-top: 35px;
+
+            width: 520px;
+            max-width: 100%;
+
+            height: 58px;
+
+            background: white;
+
+            border-radius: 14px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 20px;
+
+            color: #555;
+        }
+
+        .search-box i {
+            margin-right: 12px;
+        }
+
+        .search-box input {
+            width: 100%;
+
+            border: none;
+
+            outline: none;
+
+            font-size: 15px;
+
+            color: #222;
+        }
+
+
+        /* =====================================================
+           CATEGORIES
+        ===================================================== */
+
+        .categories {
+            padding: 80px 8%;
+
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+
+            margin-bottom: 38px;
+        }
+
+        .section-title span,
+        .section-heading span {
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            color: #8766ff;
+        }
+
+        .section-title h2,
+        .section-heading h2 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 36px;
+
+            margin-top: 8px;
+        }
+
+        .category-list {
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+        .category {
+            padding: 13px 19px;
+
+            border: 1px solid #ddd;
+
+            background: white;
+
+            border-radius: 30px;
+
+            cursor: pointer;
+
+            font-weight: 600;
+
+            transition: .3s;
+        }
+
+        .category:hover,
+        .category.active {
+            background: #171717;
+
+            color: white;
+
+            border-color: #171717;
+        }
+
+
+        /* =====================================================
+           EVENTS
+        ===================================================== */
+
+        .events-section {
+            padding: 85px 8%;
+        }
+
+        .section-heading {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 35px;
+        }
+
+        .view-all {
+            background: transparent;
+
+            border: none;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            font-size: 14px;
+        }
+
+        .event-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .event-card {
+            background: white;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            border: 1px solid #e8e8ee;
+
+            transition: .35s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,.08);
+        }
+
+
+        /* POSTERS */
+
+        .poster {
+            height: 235px;
+
+            padding: 20px;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: flex-end;
+
+            color: white;
+
+            overflow: hidden;
+        }
+
+        .poster::before {
+            content: "";
+
+            position: absolute;
+
+            width: 210px;
+            height: 210px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,.12);
+
+            top: -75px;
+
+            right: -60px;
+        }
+
+        .poster::after {
+            content: "";
+
+            position: absolute;
+
+            width: 130px;
+            height: 130px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(255,255,255,.15);
+
+            bottom: -70px;
+
+            left: -35px;
+        }
+
+        .poster-one {
+            background:
+                linear-gradient(
+                    135deg,
+                    #171717,
+                    #6541e8
+                );
+        }
+
+        .poster-two {
+            background:
+                linear-gradient(
+                    135deg,
+                    #075985,
+                    #00a6a6
+                );
+        }
+
+        .poster-three {
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c2d12,
+                    #ec4899
+                );
+        }
+
+        .poster-four {
+            background:
+                linear-gradient(
+                    135deg,
+                    #14532d,
+                    #16a34a
+                );
+        }
+
+
+        .event-tag {
+            position: absolute;
+
+            top: 18px;
+
+            left: 18px;
+
+            padding: 7px 11px;
+
+            background: rgba(255,255,255,.16);
+
+            backdrop-filter: blur(8px);
+
+            border-radius: 20px;
+
+            font-size: 10px;
+
+            font-weight: 800;
+        }
+
+        .poster-content {
+            position: relative;
+
+            z-index: 2;
+        }
+
+        .poster-content small {
+            font-size: 10px;
+
+            opacity: .8;
+        }
+
+        .poster-content h3 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 29px;
+
+            line-height: 1.1;
+
+            margin: 8px 0;
+        }
+
+        .poster-content strong {
+            display: block;
+        }
+
+        .poster-content p {
+            font-size: 12px;
+
+            opacity: .8;
+        }
+
+
+        /* EVENT BODY */
+
+        .event-body {
+            padding: 22px;
+        }
+
+        .event-body h3 {
+            font-size: 20px;
+        }
+
+        .event-description {
+            color: #777;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            margin: 10px 0 18px;
+        }
+
+        .event-details p {
+            color: #555;
+
+            font-size: 12px;
+
+            margin: 8px 0;
+        }
+
+        .event-details i {
+            width: 20px;
+        }
+
+
+        /* BUTTONS */
+
+        .card-buttons {
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 20px;
+        }
+
+        .card-buttons button {
+            flex: 1;
+
+            padding: 11px;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            font-weight: 600;
+        }
+
+        .details-btn {
+            background: white;
+
+            border: 1px solid #ddd;
+        }
+
+        .register-btn {
+            background: #171717;
+
+            color: white;
+
+            border: 1px solid #171717;
+        }
+
+
+        /* =====================================================
+           CALENDAR
+        ===================================================== */
+
+        .calendar-section {
+            padding: 85px 8%;
+
+            background: white;
+        }
+
+        .calendar-box {
+            max-width: 850px;
+
+            margin: auto;
+
+            border: 1px solid #ddd;
+
+            border-radius: 20px;
+
+            padding: 25px;
+        }
+
+        .calendar-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 25px;
+        }
+
+        .calendar-header button {
+            width: 38px;
+            height: 38px;
+
+            border: 1px solid #ddd;
+
+            background: white;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+        }
+
+        .calendar-days,
+        .calendar-dates {
+            display: grid;
+
+            grid-template-columns: repeat(7, 1fr);
+
+            gap: 8px;
+        }
+
+        .calendar-days span {
+            text-align: center;
+
+            font-size: 12px;
+
+            color: #888;
+
+            font-weight: 700;
+        }
+
+        .calendar-dates {
+            margin-top: 12px;
+        }
+
+        .calendar-date {
+            min-height: 55px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 10px;
+
+            font-size: 13px;
+
+            cursor: pointer;
+
+            transition: .2s;
+        }
+
+        .calendar-date:hover {
+            background: #f0edff;
+        }
+
+        .event-date {
+            background: #171717;
+
+            color: white;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            padding: 55px 8%;
+
+            background: #101114;
+
+            color: white;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+        footer h2 {
+            font-family: "Space Grotesk", sans-serif;
+
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #999;
+
+            font-size: 13px;
+
+            margin-top: 7px;
+        }
+
+
+        /* =====================================================
+           MODAL
+        ===================================================== */
+
+        .modal {
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0,0,0,.65);
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            z-index: 2000;
+
+            padding: 20px;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            width: 450px;
+
+            max-width: 100%;
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            position: relative;
+
+            animation: popup .25s ease;
+        }
+
+        @keyframes popup {
+
+            from {
+                transform: scale(.9);
+
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+
+                opacity: 1;
+            }
+
+        }
+
+        .close {
+            position: absolute;
+
+            right: 18px;
+
+            top: 15px;
+
+            border: none;
+
+            background: transparent;
+
+            font-size: 25px;
+
+            cursor: pointer;
+        }
+
+        .modal-label {
+            color: #8766ff;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+        }
+
+        .modal-content h2 {
+            margin: 10px 0 25px;
+
+            font-family: "Space Grotesk", sans-serif;
+        }
+
+        .modal-info p {
+            padding: 12px 0;
+
+            border-bottom: 1px solid #eee;
+
+            font-size: 14px;
+        }
+
+        .modal-info i {
+            width: 25px;
+        }
+
+        .register-large,
+        .login-submit {
+            width: 100%;
+
+            border: none;
+
+            background: #171717;
+
+            color: white;
+
+            padding: 13px;
+
+            border-radius: 9px;
+
+            margin-top: 22px;
+
+            cursor: pointer;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           LOGIN
+        ===================================================== */
+
+        .login-icon {
+            width: 55px;
+
+            height: 55px;
+
+            border-radius: 15px;
+
+            background: #171717;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 22px;
+
+            margin-bottom: 20px;
+        }
+
+        .login-modal p {
+            color: #777;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+        .login-modal input {
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 9px;
+
+            outline: none;
+
+            margin-top: 12px;
+        }
+
+        .signup-text {
+            text-align: center;
+
+            margin-top: 20px;
+        }
+
+        .signup-text b {
+            color: #7253e6;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           NOTIFICATIONS
+        ===================================================== */
+
+        .notification-panel {
+            position: fixed;
+
+            top: 92px;
+
+            right: 30px;
+
+            width: 350px;
+
+            max-width: calc(100% - 40px);
+
+            background: white;
+
+            border: 1px solid #ddd;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,.15);
+
+            z-index: 1500;
+
+            display: none;
+        }
+
+        .notification-panel.show {
+            display: block;
+        }
+
+        .notification-header {
+            padding: 18px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            border-bottom: 1px solid #eee;
+        }
+
+        .notification-header button {
+            border: none;
+
+            background: none;
+
+            font-size: 20px;
+
+            cursor: pointer;
+        }
+
+        .notification-item {
+            display: flex;
+
+            gap: 12px;
+
+            padding: 17px;
+
+            border-bottom: 1px solid #eee;
+        }
+
+        .notification-item i {
+            width: 35px;
+
+            height: 35px;
+
+            background: #f1efff;
+
+            border-radius: 10px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: #7658ef;
+        }
+
+        .notification-item b {
+            font-size: 13px;
+        }
+
+        .notification-item p {
+            font-size: 11px;
+
+            color: #777;
+
+            margin-top: 4px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media(max-width: 1000px) {
+
+            nav a {
+                display: none;
+            }
+
+            .event-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media(max-width: 650px) {
+
+            .navbar {
+                padding: 9px 5%;
+            }
+
+            .college-logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .logo-text h2 {
+                font-size: 14px;
+
+                max-width: 210px;
+            }
+
+            .logo-text span {
+                font-size: 9px;
+            }
+
+            .login-btn {
+                padding: 9px 12px;
+
+                font-size: 12px;
+            }
+
+            .hero {
+                min-height: 530px;
+
+                padding: 60px 7%;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+
+                letter-spacing: -2px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .event-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading {
+                align-items: flex-end;
+            }
+
+            .section-heading h2,
+            .section-title h2 {
+                font-size: 29px;
+            }
+
+            footer {
+                flex-direction: column;
+            }
+
+            .calendar-box {
+                padding: 15px;
+            }
+
+            .calendar-date {
+                min-height: 45px;
+            }
+
+            .notification-panel {
+                right: 20px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <!-- YOUR ACTUAL COLLEGE LOGO -->
+        <img
+            src="mrecw-logo.png"
+            alt="Malla Reddy Engineering College for Women Logo"
+            class="college-logo"
+        >
+
+        <div class="logo-text">
+
+            <h2>
+                Malla Reddy Engineering College for Women
+            </h2>
+
+            <span>
+                College Event Hub
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#events">
+            Events
+        </a>
+
+        <a href="#categories">
+            Categories
+        </a>
+
+        <a href="#calendar">
+            Calendar
+        </a>
+
+
+        <button
+            class="notification-btn"
+            onclick="showNotifications()">
+
+            <i class="fa-regular fa-bell"></i>
+
+            <span id="notificationCount">
+                3
+            </span>
+
+        </button>
+
+
+        <button
+            class="login-btn"
+            onclick="openLogin()">
+
+            <i class="fa-regular fa-user"></i>
+
+            Login
+
+        </button>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+    class="hero"
+    id="home">
+
+    <div class="hero-content">
+
+
+        <span class="hero-label">
+
+            MALLA REDDY ENGINEERING COLLEGE FOR WOMEN
+
+        </span>
+
+
+        <h1>
+
+            Discover What's
+
+            <span>
+                Happening
+            </span>
+
+            on Campus.
+
+        </h1>
+
+
+        <p>
+
+            One centralized platform for
+            workshops, hackathons, competitions,
+            cultural events, seminars and
+            every important event at MRECW.
+
+        </p>
+
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search MRECW events..."
+                onkeyup="searchEvents()"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CATEGORIES
+===================================================== -->
+
+<section
+    class="categories"
+    id="categories">
+
+
+    <div class="section-title">
+
+        <span>
+            EXPLORE
+        </span>
+
+        <h2>
+            Event Categories
+        </h2>
+
+    </div>
+
+
+    <div class="category-list">
+
+
+        <button
+            class="category active"
+            onclick="filterEvents('All', this)">
+
+            <i class="fa-solid fa-layer-group"></i>
+
+            All
+
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterEvents('Technical', this)">
+
+            <i class="fa-solid fa-code"></i>
+
+            Technical
+
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterEvents('Workshop', this)">
+
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+
+            Workshop
+
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterEvents('Hackathon', this)">
+
+            <i class="fa-solid fa-laptop-code"></i>
+
+            Hackathon
+
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterEvents('Cultural', this)">
+
+            <i class="fa-solid fa-masks-theater"></i>
+
+            Cultural
+
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterEvents('Competition', this)">
+
+            <i class="fa-solid fa-trophy"></i>
+
+            Competition
+
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterEvents('Seminar', this)">
+
+            <i class="fa-solid fa-microphone"></i>
+
+            Seminar
+
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterEvents('Sports', this)">
+
+            <i class="fa-solid fa-volleyball"></i>
+
+            Sports
+
+        </button>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EVENTS
+===================================================== -->
+
+<section
+    class="events-section"
+    id="events">
+
+
+    <div class="section-heading">
+
+        <div>
+
+            <span>
+                DON'T MISS OUT
+            </span>
+
+            <h2>
+                Upcoming Events
+            </h2>
+
+        </div>
+
+
+        <button
+            class="view-all"
+            onclick="filterEvents('All')">
+
+            View All
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </button>
+
+    </div>
+
+
+
+    <div
+        class="event-grid"
+        id="eventGrid">
+
+
+        <!-- EVENT 1 -->
+
+        <article
+            class="event-card"
+            data-category="Hackathon"
+            data-title="AI Innovation Hackathon">
+
+
+            <div class="poster poster-one">
+
+                <span class="event-tag">
+                    HACKATHON
+                </span>
+
+
+                <div class="poster-content">
+
+                    <small>
+                        MRECW • COLLEGE EVENT
+                    </small>
+
+
+                    <h3>
+
+                        AI Innovation
+
+                        <strong>
+                            Hackathon
+                        </strong>
+
+                    </h3>
+
+
+                    <p>
+                        Build • Innovate • Solve
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="event-body">
+
+
+                <h3>
+                    AI Innovation Hackathon
+                </h3>
+
+
+                <p class="event-description">
+
+                    Build innovative AI solutions
+                    and compete with students
+                    across MRECW.
+
+                </p>
+
+
+                <div class="event-details">
+
+                    <p>
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        18 October 2026
+
+                    </p>
+
+
+                    <p>
+
+                        <i class="fa-regular fa-clock"></i>
+
+                        10:00 AM
+
+                    </p>
+
+
+                    <p>
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Seminar Hall
+
+                    </p>
+
+                </div>
+
+
+                <div class="card-buttons">
+
+
+                    <button
+                        class="details-btn"
+                        onclick="showDetails(
+                            'AI Innovation Hackathon',
+                            '18 October 2026',
+                            '10:00 AM',
+                            'Seminar Hall'
+                        )">
+
+                        View Details
+
+                    </button>
+
+
+                    <button
+                        class="register-btn"
+                        onclick="registerEvent(
+                            'AI Innovation Hackathon'
+                        )">
+
+                        Register Now
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- EVENT 2 -->
+
+        <article
+            class="event-card"
+            data-category="Workshop"
+            data-title="Generative AI Workshop">
+
+
+            <div class="poster poster-two">
+
+                <span class="event-tag">
+                    WORKSHOP
+                </span>
+
+
+                <div class="poster-content">
+
+                    <small>
+                        MRECW • TECHNICAL EVENT
+                    </small>
+
+
+                    <h3>
+
+                        Generative
+
+                        <strong>
+                            AI Workshop
+                        </strong>
+
+                    </h3>
+
+
+                    <p>
+                        Learn • Create • Explore
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="event-body">
+
+
+                <h3>
+                    Generative AI Workshop
+                </h3>
+
+
+                <p class="event-description">
+
+                    Learn the basics of Generative AI,
+                    LLMs and modern AI tools.
+
+                </p>
+
+
+                <div class="event-details">
+
+
+                    <p>
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        22 October 2026
+
+                    </p>
+
+
+                    <p>
+
+                        <i class="fa-regular fa-clock"></i>
+
+                        11:00 AM
+
+                    </p>
+
+
+                    <p>
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        AI Lab
+
+                    </p>
+
+                </div>
+
+
+                <div class="card-buttons">
+
+
+                    <button
+                        class="details-btn"
+                        onclick="showDetails(
+                            'Generative AI Workshop',
+                            '22 October 2026',
+                            '11:00 AM',
+                            'AI Lab'
+                        )">
+
+                        View Details
+
+                    </button>
+
+
+                    <button
+                        class="register-btn"
+                        onclick="registerEvent(
+                            'Generative AI Workshop'
+                        )">
+
+                        Register Now
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- EVENT 3 -->
+
+        <article
+            class="event-card"
+            data-category="Cultural"
+            data-title="MRECW Cultural Fest">
+
+
+            <div class="poster poster-three">
+
+                <span class="event-tag">
+                    CULTURAL
+                </span>
+
+
+                <div class="poster-content">
+
+                    <small>
+                        MRECW • ANNUAL EVENT
+                    </small>
+
+
+                    <h3>
+
+                        MRECW
+
+                        <strong>
+                            Cultural Fest
+                        </strong>
+
+                    </h3>
+
+
+                    <p>
+                        Celebrate • Perform • Enjoy
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="event-body">
+
+
+                <h3>
+                    MRECW Cultural Fest
+                </h3>
+
+
+                <p class="event-description">
+
+                    Music, dance, performances,
+                    competitions and fun activities.
+
+                </p>
+
+
+                <div class="event-details">
+
+
+                    <p>
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        28 October 2026
+
+                    </p>
+
+
+                    <p>
+
+                        <i class="fa-regular fa-clock"></i>
+
+                        9:30 AM
+
+                    </p>
+
+
+                    <p>
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        College Ground
+
+                    </p>
+
+                </div>
+
+
+                <div class="card-buttons">
+
+
+                    <button
+                        class="details-btn"
+                        onclick="showDetails(
+                            'MRECW Cultural Fest',
+                            '28 October 2026',
+                            '9:30 AM',
+                            'College Ground'
+                        )">
+
+                        View Details
+
+                    </button>
+
+
+                    <button
+                        class="register-btn"
+                        onclick="registerEvent(
+                            'MRECW Cultural Fest'
+                        )">
+
+                        Register Now
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- EVENT 4 -->
+
+        <article
+            class="event-card"
+            data-category="Competition"
+            data-title="Coding Competition">
+
+
+            <div class="poster poster-four">
+
+                <span class="event-tag">
+                    COMPETITION
+                </span>
+
+
+                <div class="poster-content">
+
+                    <small>
+                        MRECW • STUDENT EVENT
+                    </small>
+
+
+                    <h3>
+
+                        Code
+
+                        <strong>
+                            Challenge
+                        </strong>
+
+                    </h3>
+
+
+                    <p>
+                        Think • Code • Win
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="event-body">
+
+
+                <h3>
+                    Coding Competition
+                </h3>
+
+
+                <p class="event-description">
+
+                    Test your programming skills
+                    through an exciting coding challenge.
+
+                </p>
+
+
+                <div class="event-details">
+
+
+                    <p>
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        30 October 2026
+
+                    </p>
+
+
+                    <p>
+
+                        <i class="fa-regular fa-clock"></i>
+
+                        2:00 PM
+
+                    </p>
+
+
+                    <p>
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Computer Lab
+
+                    </p>
+
+                </div>
+
+
+                <div class="card-buttons">
+
+
+                    <button
+                        class="details-btn"
+                        onclick="showDetails(
+                            'Coding Competition',
+                            '30 October 2026',
+                            '2:00 PM',
+                            'Computer Lab'
+                        )">
+
+                        View Details
+
+                    </button>
+
+
+                    <button
+                        class="register-btn"
+                        onclick="registerEvent(
+                            'Coding Competition'
+                        )">
+
+                        Register Now
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CALENDAR
+===================================================== -->
+
+<section
+    class="calendar-section"
+    id="calendar">
+
+
+    <div class="section-title">
+
+        <span>
+            PLAN AHEAD
+        </span>
+
+        <h2>
+            Event Calendar
+        </h2>
+
+    </div>
+
+
+    <div class="calendar-box">
+
+
+        <div class="calendar-header">
+
+
+            <button onclick="previousMonth()">
+
+                <i class="fa-solid fa-chevron-left"></i>
+
+            </button>
+
+
+            <h3 id="monthName">
+                October 2026
+            </h3>
+
+
+            <button onclick="nextMonth()">
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </button>
+
+
+        </div>
+
+
+        <div class="calendar-days">
+
+            <span>Sun</span>
+            <span>Mon</span>
+            <span>Tue</span>
+            <span>Wed</span>
+            <span>Thu</span>
+            <span>Fri</span>
+            <span>Sat</span>
+
+        </div>
+
+
+        <div
+            class="calendar-dates"
+            id="calendarDates">
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+
+    <div>
+
+        <h2>
+            🎓 MRECW College Event Hub
+        </h2>
+
+
+        <p>
+            Malla Reddy Engineering College for Women
+        </p>
+
+
+        <p>
+            One platform for every college event.
+        </p>
+
+    </div>
+
+
+
+    <div>
+
+        <p>
+            © 2026 MRECW College Event Hub
+        </p>
+
+
+        <p>
+            Student • Organizer • Admin Platform
+        </p>
+
+    </div>
+
+
+</footer>
+
+
+
+<!-- =====================================================
+     EVENT DETAILS MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="detailsModal">
+
+
+    <div class="modal-content">
+
+
+        <button
+            class="close"
+            onclick="closeModal('detailsModal')">
+
+            ×
+
+        </button>
+
+
+        <span class="modal-label">
+            EVENT DETAILS
+        </span>
+
+
+        <h2 id="detailTitle">
+            Event
+        </h2>
+
+
+        <div class="modal-info">
+
+
+            <p>
+
+                <i class="fa-regular fa-calendar"></i>
+
+                <span id="detailDate"></span>
+
+            </p>
+
+
+            <p>
+
+                <i class="fa-regular fa-clock"></i>
+
+                <span id="detailTime"></span>
+
+            </p>
+
+
+            <p>
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <span id="detailVenue"></span>
+
+            </p>
+
+
+        </div>
+
+
+        <button
+            class="register-large"
+            onclick="registerEventFromModal()">
+
+            Register Now
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     LOGIN MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="loginModal">
+
+
+    <div class="modal-content login-modal">
+
+
+        <button
+            class="close"
+            onclick="closeModal('loginModal')">
+
+            ×
+
+        </button>
+
+
+        <div class="login-icon">
+
+            <i class="fa-solid fa-graduation-cap"></i>
+
+        </div>
+
+
+        <h2>
+            Welcome Back
+        </h2>
+
+
+        <p>
+            Login to your MRECW College Event Hub account.
+        </p>
+
+
+        <input
+            type="email"
+            id="loginEmail"
+            placeholder="MRECW College Email">
+
+
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Password">
+
+
+        <button
+            class="login-submit"
+            onclick="login()">
+
+            Login
+
+        </button>
+
+
+        <p class="signup-text">
+
+            Don't have an account?
+
+            <b onclick="signup()">
+                Sign Up
+            </b>
+
+        </p>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     NOTIFICATIONS
+===================================================== -->
+
+<div
+    class="notification-panel"
+    id="notificationPanel">
+
+
+    <div class="notification-header">
+
+        <h3>
+            Notifications
+        </h3>
+
+
+        <button onclick="closeNotifications()">
+            ×
+        </button>
+
+    </div>
+
+
+
+    <div class="notification-item">
+
+
+        <i class="fa-solid fa-calendar-check"></i>
+
+
+        <div>
+
+            <b>
+                New Event Published
+            </b>
+
+
+            <p>
+                AI Innovation Hackathon is now live.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="notification-item">
+
+
+        <i class="fa-solid fa-clock"></i>
+
+
+        <div>
+
+            <b>
+                Registration Reminder
+            </b>
+
+
+            <p>
+                Generative AI Workshop registration closes soon.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="notification-item">
+
+
+        <i class="fa-solid fa-bell"></i>
+
+
+        <div>
+
+            <b>
+                Upcoming Event
+            </b>
+
+
+            <p>
+                MRECW Cultural Fest is coming soon.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+    /* =====================================================
+       SEARCH EVENTS
+    ===================================================== */
+
+    function searchEvents() {
+
+        const search =
+            document
+                .getElementById("searchInput")
+                .value
+                .toLowerCase()
+                .trim();
+
+
+        const cards =
+            document.querySelectorAll(".event-card");
+
+
+        cards.forEach(card => {
+
+            const title =
+                card
+                    .dataset
+                    .title
+                    .toLowerCase();
+
+
+            const category =
+                card
+                    .dataset
+                    .category
+                    .toLowerCase();
+
+
+            if (
+                title.includes(search) ||
+                category.includes(search)
+            ) {
+
+                card.style.display = "block";
+
+            }
+
+            else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+
+    /* =====================================================
+       FILTER EVENTS
+    ===================================================== */
+
+    function filterEvents(category, button) {
+
+
+        const cards =
+            document.querySelectorAll(".event-card");
+
+
+        if (button) {
+
+            document
+                .querySelectorAll(".category")
+                .forEach(btn => {
+
+                    btn.classList.remove("active");
+
+                });
+
+
+            button.classList.add("active");
+
+        }
+
+
+        cards.forEach(card => {
+
+
+            if (
+                category === "All" ||
+                card.dataset.category === category
+            ) {
+
+                card.style.display = "block";
+
+            }
+
+            else {
+
+                card.style.display = "none";
+
+            }
+
+
+        });
+
+    }
+
+
+
+    /* =====================================================
+       EVENT DETAILS
+    ===================================================== */
+
+    let selectedEvent = "";
+
+
+    function showDetails(
+        title,
+        date,
+        time,
+        venue
+    ) {
+
+
+        selectedEvent = title;
+
+
+        document
+            .getElementById("detailTitle")
+            .textContent = title;
+
+
+        document
+            .getElementById("detailDate")
+            .textContent = date;
+
+
+        document
+            .getElementById("detailTime")
+            .textContent = time;
+
+
+        document
+            .getElementById("detailVenue")
+            .textContent = venue;
+
+
+        document
+            .getElementById("detailsModal")
+            .classList.add("show");
+
+    }
+
+
+
+    /* =====================================================
+       REGISTER
+    ===================================================== */
+
+    function registerEvent(eventName) {
+
+
+        alert(
+            "Registration selected for:\n\n" +
+            eventName +
+            "\n\nRegistration link can be connected here."
+        );
+
+    }
+
+
+    function registerEventFromModal() {
+
+        registerEvent(selectedEvent);
+
+    }
+
+
+
+    /* =====================================================
+       LOGIN
+    ===================================================== */
+
+    function openLogin() {
+
+        document
+            .getElementById("loginModal")
+            .classList.add("show");
+
+    }
+
+
+    function login() {
+
+
+        const email =
+            document
+                .getElementById("loginEmail")
+                .value
+                .trim();
+
+
+        const password =
+            document
+                .getElementById("loginPassword")
+                .value
+                .trim();
+
+
+        if (!email || !password) {
+
+            alert(
+                "Please enter your college email and password."
+            );
+
+            return;
+
+        }
+
+
+        alert(
+            "Login successful!\n\n" +
+            "Welcome to MRECW College Event Hub."
+        );
+
+
+        closeModal("loginModal");
+
+    }
+
+
+    function signup() {
+
+        alert(
+            "Signup page will be connected here."
+        );
+
+    }
+
+
+
+    /* =====================================================
+       MODAL
+    ===================================================== */
+
+    function closeModal(id) {
+
+        document
+            .getElementById(id)
+            .classList.remove("show");
+
+    }
+
+
+    window.onclick = function(event) {
+
+
+        if (
+            event.target.classList.contains("modal")
+        ) {
+
+            event.target.classList.remove("show");
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       NOTIFICATIONS
+    ===================================================== */
+
+    function showNotifications() {
+
+        document
+            .getElementById("notificationPanel")
+            .classList.add("show");
+
+    }
+
+
+    function closeNotifications() {
+
+        document
+            .getElementById("notificationPanel")
+            .classList.remove("show");
+
+    }
+
+
+
+    /* =====================================================
+       CALENDAR
+    ===================================================== */
+
+    let currentMonth = 9;
+
+    let currentYear = 2026;
+
+
+    const eventDates = {
+
+
+        "2026-10-18":
+            "AI Innovation Hackathon",
+
+
+        "2026-10-22":
+            "Generative AI Workshop",
+
+
+        "2026-10-28":
+            "MRECW Cultural Fest",
+
+
+        "2026-10-30":
+            "Coding Competition"
+
+
+    };
+
+
+    function renderCalendar() {
+
+
+        const monthName =
+            document
+                .getElementById("monthName");
+
+
+        const calendar =
+            document
+                .getElementById("calendarDates");
+
+
+        const date =
+            new Date(
+                currentYear,
+                currentMonth,
+                1
+            );
+
+
+        const month =
+            date.toLocaleString(
+                "default",
+                {
+                    month: "long"
+                }
+            );
+
+
+        monthName.textContent =
+            month + " " + currentYear;
+
+
+        calendar.innerHTML = "";
+
+
+        const firstDay =
+            new Date(
+                currentYear,
+                currentMonth,
+                1
+            ).getDay();
+
+
+        const totalDays =
+            new Date(
+                currentYear,
+                currentMonth + 1,
+                0
+            ).getDate();
+
+
+        for (
+            let i = 0;
+            i < firstDay;
+            i++
+        ) {
+
+            const empty =
+                document.createElement("div");
+
+
+            calendar.appendChild(empty);
+
+        }
+
+
+        for (
+            let day = 1;
+            day <= totalDays;
+            day++
+        ) {
+
+
+            const dateBox =
+                document.createElement("div");
+
+
+            dateBox.className =
+                "calendar-date";
+
+
+            dateBox.textContent =
+                day;
+
+
+            const monthString =
+                String(currentMonth + 1)
+                    .padStart(2, "0");
+
+
+            const dayString =
+                String(day)
+                    .padStart(2, "0");
+
+
+            const key =
+                currentYear +
+                "-" +
+                monthString +
+                "-" +
+                dayString;
+
+
+            if (eventDates[key]) {
+
+
+                dateBox.classList.add(
+                    "event-date"
+                );
+
+
+                dateBox.title =
+                    eventDates[key];
+
+
+                dateBox.onclick =
+                    function () {
+
+
+                        alert(
+                            "MRECW Event:\n\n" +
+                            eventDates[key]
+                        );
+
+
+                    };
+
+
+            }
+
+
+            calendar.appendChild(
+                dateBox
+            );
+
+        }
+
+    }
+
+
+
+    function previousMonth() {
+
+
+        currentMonth--;
+
+
+        if (currentMonth < 0) {
+
+            currentMonth = 11;
+
+            currentYear--;
+
+        }
+
+
+        renderCalendar();
+
+    }
+
+
+
+    function nextMonth() {
+
+
+        currentMonth++;
+
+
+        if (currentMonth > 11) {
+
+            currentMonth = 0;
+
+            currentYear++;
+
+        }
+
+
+        renderCalendar();
+
+    }
+
+
+
+    /* INITIALIZE */
+
+    renderCalendar();
+
+
+</script>
+
+
+</body>
+
+</html>

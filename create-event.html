@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Event | MRECW College Event Hub</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        /* ================= HEADER ================= */
+
+        .header {
+            background: #111827;
+            color: white;
+            height: 75px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 40px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand img {
+            width: 48px;
+            height: 48px;
+
+            object-fit: contain;
+
+            background: white;
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        .brand h2 {
+            font-size: 17px;
+        }
+
+        .brand p {
+            font-size: 11px;
+            color: #9ca3af;
+            margin-top: 3px;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: white;
+
+            padding: 10px 16px;
+
+            border: 1px solid #374151;
+            border-radius: 8px;
+
+            font-size: 13px;
+
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #2563eb;
+            border-color: #2563eb;
+        }
+
+
+        /* ================= MAIN ================= */
+
+        .container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            margin-bottom: 25px;
+        }
+
+        .page-title h1 {
+            font-size: 28px;
+            color: #111827;
+        }
+
+        .page-title p {
+            color: #6b7280;
+            margin-top: 7px;
+            font-size: 14px;
+        }
+
+
+        /* ================= FORM ================= */
+
+        .form-container {
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 30px;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            margin-bottom: 20px;
+
+            padding-bottom: 12px;
+
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .section-title i {
+            color: #2563eb;
+        }
+
+        .section-title h2 {
+            font-size: 17px;
+        }
+
+
+        .form-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: 600;
+
+            margin-bottom: 8px;
+
+            color: #374151;
+        }
+
+        label span {
+            color: #ef4444;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+
+            padding: 12px 14px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 9px;
+
+            font-family: inherit;
+            font-size: 13px;
+
+            outline: none;
+
+            transition: 0.3s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #2563eb;
+
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+
+        /* ================= POSTER ================= */
+
+        .poster-upload {
+            border: 2px dashed #cbd5e1;
+
+            border-radius: 12px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .poster-upload:hover {
+            border-color: #2563eb;
+            background: #eff6ff;
+        }
+
+        .poster-upload i {
+            font-size: 35px;
+            color: #2563eb;
+
+            margin-bottom: 10px;
+        }
+
+        .poster-upload h3 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .poster-upload p {
+            font-size: 11px;
+            color: #6b7280;
+        }
+
+        #poster {
+            display: none;
+        }
+
+        #posterName {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #2563eb;
+        }
+
+
+        /* ================= RADIO ================= */
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            font-size: 13px;
+
+            cursor: pointer;
+        }
+
+        .radio-option input {
+            width: auto;
+        }
+
+
+        /* ================= BUTTONS ================= */
+
+        .buttons {
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 12px;
+
+            border-top: 1px solid #e5e7eb;
+
+            padding-top: 25px;
+        }
+
+        .btn {
+            padding: 12px 22px;
+
+            border-radius: 9px;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            border: none;
+        }
+
+        .cancel-btn {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .cancel-btn:hover {
+            background: #e5e7eb;
+        }
+
+        .publish-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .publish-btn:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width: 700px) {
+
+            .header {
+                padding: 0 15px;
+            }
+
+            .brand h2 {
+                font-size: 14px;
+            }
+
+            .brand p {
+                display: none;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full {
+                grid-column: auto;
+            }
+
+            .form-container {
+                padding: 20px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="brand">
+
+        <img src="mrecw-logo.png"
+             alt="Malla Reddy Engineering College for Women Logo">
+
+        <div>
+            <h2>Malla Reddy Engineering College for Women</h2>
+            <p>College Event Hub</p>
+        </div>
+
+    </div>
+
+
+    <a href="organizer-dashboard.html" class="back-btn">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Back to Dashboard
+
+    </a>
+
+</header>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="container">
+
+
+    <div class="page-title">
+
+        <h1>Create New Event</h1>
+
+        <p>
+            Publish your college event and reach students easily.
+        </p>
+
+    </div>
+
+
+
+    <form id="eventForm" class="form-container">
+
+
+        <!-- ================= POSTER ================= -->
+
+        <section class="form-section">
+
+            <div class="section-title">
+
+                <i class="fa-solid fa-image"></i>
+
+                <h2>Event Poster</h2>
+
+            </div>
+
+
+            <label for="poster">
+
+                Upload Event Poster <span>*</span>
+
+            </label>
+
+
+            <label class="poster-upload" for="poster">
+
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                <h3>Click to upload poster</h3>
+
+                <p>
+                    PNG, JPG or JPEG recommended
+                </p>
+
+                <p id="posterName"></p>
+
+            </label>
+
+
+            <input
+                type="file"
+                id="poster"
+                accept="image/png,image/jpeg"
+            >
+
+        </section>
+
+
+
+        <!-- ================= BASIC DETAILS ================= -->
+
+        <section class="form-section">
+
+            <div class="section-title">
+
+                <i class="fa-solid fa-circle-info"></i>
+
+                <h2>Basic Event Details</h2>
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Event Title <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="eventTitle"
+                        placeholder="Example: AI Innovation Hackathon"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Event Category <span>*</span>
+                    </label>
+
+                    <select id="category" required>
+
+                        <option value="">
+                            Select Category
+                        </option>
+
+                        <option value="Workshop">
+                            Workshop
+                        </option>
+
+                        <option value="Hackathon">
+                            Hackathon
+                        </option>
+
+                        <option value="Seminar">
+                            Seminar
+                        </option>
+
+                        <option value="Webinar">
+                            Webinar
+                        </option>
+
+                        <option value="Cultural">
+                            Cultural
+                        </option>
+
+                        <option value="Sports">
+                            Sports
+                        </option>
+
+                        <option value="Competition">
+                            Competition
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Event Type <span>*</span>
+                    </label>
+
+                    <div class="radio-group">
+
+                        <label class="radio-option">
+
+                            <input
+                                type="radio"
+                                name="eventType"
+                                value="Technical"
+                                required
+                            >
+
+                            Technical
+
+                        </label>
+
+
+                        <label class="radio-option">
+
+                            <input
+                                type="radio"
+                                name="eventType"
+                                value="Non-Technical"
+                            >
+
+                            Non-Technical
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Organizer / Club <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="organizer"
+                        placeholder="Example: AIML Club"
+                        required
+                    >
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= DATE AND VENUE ================= -->
+
+        <section class="form-section">
+
+            <div class="section-title">
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+                <h2>Date, Time & Venue</h2>
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Event Date <span>*</span>
+                    </label>
+
+                    <input
+                        type="date"
+                        id="eventDate"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Event Time <span>*</span>
+                    </label>
+
+                    <input
+                        type="time"
+                        id="eventTime"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Venue <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="venue"
+                        placeholder="Example: Seminar Hall"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Maximum Participants
+                    </label>
+
+                    <input
+                        type="number"
+                        id="participants"
+                        placeholder="Example: 100"
+                        min="1"
+                    >
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= DESCRIPTION ================= -->
+
+        <section class="form-section">
+
+            <div class="section-title">
+
+                <i class="fa-solid fa-align-left"></i>
+
+                <h2>Event Description</h2>
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Description <span>*</span>
+                    </label>
+
+                    <textarea
+                        id="description"
+                        placeholder="Explain what the event is about, activities, rules, etc."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Eligibility
+                    </label>
+
+                    <input
+                        type="text"
+                        id="eligibility"
+                        placeholder="Example: All B.Tech students"
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Registration Deadline
+                    </label>
+
+                    <input
+                        type="date"
+                        id="deadline"
+                    >
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= REGISTRATION ================= -->
+
+        <section class="form-section">
+
+            <div class="section-title">
+
+                <i class="fa-solid fa-link"></i>
+
+                <h2>Registration Details</h2>
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Registration Link <span>*</span>
+                    </label>
+
+                    <input
+                        type="url"
+                        id="registrationLink"
+                        placeholder="https://forms.google.com/..."
+                        required
+                    >
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= BUTTONS ================= -->
+
+        <div class="buttons">
+
+            <button
+                type="button"
+                class="btn cancel-btn"
+                onclick="goBack()"
+            >
+
+                Cancel
+
+            </button>
+
+
+            <button
+                type="submit"
+                class="btn publish-btn"
+            >
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+                Publish Event
+
+            </button>
+
+        </div>
+
+
+    </form>
+
+</main>
+
+
+
+<script>
+
+
+    /* ================= POSTER NAME ================= */
+
+    document
+        .getElementById("poster")
+        .addEventListener("change", function () {
+
+            const file = this.files[0];
+
+            if (file) {
+
+                document.getElementById("posterName").textContent =
+                    "Selected: " + file.name;
+
+            }
+
+        });
+
+
+
+    /* ================= FORM SUBMIT ================= */
+
+    document
+        .getElementById("eventForm")
+        .addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+
+            const selectedType =
+                document.querySelector(
+                    'input[name="eventType"]:checked'
+                );
+
+
+            const eventData = {
+
+                title:
+                    document.getElementById("eventTitle").value,
+
+                category:
+                    document.getElementById("category").value,
+
+                type:
+                    selectedType ? selectedType.value : "",
+
+                organizer:
+                    document.getElementById("organizer").value,
+
+                date:
+                    document.getElementById("eventDate").value,
+
+                time:
+                    document.getElementById("eventTime").value,
+
+                venue:
+                    document.getElementById("venue").value,
+
+                participants:
+                    document.getElementById("participants").value,
+
+                description:
+                    document.getElementById("description").value,
+
+                eligibility:
+                    document.getElementById("eligibility").value,
+
+                deadline:
+                    document.getElementById("deadline").value,
+
+                registrationLink:
+                    document.getElementById("registrationLink").value,
+
+                registrations: 0,
+
+                status: "Pending Approval"
+
+            };
+
+
+            /* Get existing events */
+
+            let events =
+                JSON.parse(
+                    localStorage.getItem("mrecwEvents")
+                ) || [];
+
+
+            /* Add new event */
+
+            events.push(eventData);
+
+
+            /* Save */
+
+            localStorage.setItem(
+                "mrecwEvents",
+                JSON.stringify(events)
+            );
+
+
+            alert(
+                "Event created successfully! 🎉\n\n" +
+                "Status: Pending Admin Approval"
+            );
+
+
+            /* Return to organizer dashboard */
+
+            window.location.href =
+                "organizer-dashboard.html";
+
+        });
+
+
+
+    /* ================= BACK ================= */
+
+    function goBack() {
+
+        window.location.href =
+            "organizer-dashboard.html";
+
+    }
+
+</script>
+
+
+</body>
+</html>

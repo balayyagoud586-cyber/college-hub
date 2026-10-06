@@ -1,0 +1,656 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MRECW - Login</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(130, 80, 255, .18),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 80% 80%,
+                    rgba(255, 150, 50, .12),
+                    transparent 30%
+                ),
+                #101114;
+
+            padding: 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 450px;
+
+            background: rgba(255,255,255,.97);
+
+            border-radius: 24px;
+
+            padding: 38px;
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,.3);
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .college-logo {
+            width: 90px;
+            height: 90px;
+
+            object-fit: contain;
+
+            margin-bottom: 12px;
+        }
+
+        .logo-section h1 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 22px;
+
+            color: #171717;
+
+            line-height: 1.2;
+        }
+
+        .logo-section p {
+            margin-top: 6px;
+
+            font-size: 12px;
+
+            color: #777;
+        }
+
+        .login-title {
+            margin-top: 25px;
+            margin-bottom: 20px;
+        }
+
+        .login-title h2 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 30px;
+        }
+
+        .login-title p {
+            margin-top: 7px;
+
+            color: #777;
+
+            font-size: 13px;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        .form-group label {
+            display: block;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            margin-bottom: 7px;
+        }
+
+        .input-box {
+            position: relative;
+        }
+
+        .input-box i {
+            position: absolute;
+
+            left: 14px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #777;
+        }
+
+        .input-box input,
+        .input-box select {
+            width: 100%;
+
+            height: 48px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            padding: 0 15px 0 42px;
+
+            font-size: 13px;
+
+            background: #fff;
+        }
+
+        .input-box input:focus,
+        .input-box select:focus {
+            border-color: #8064e8;
+
+            box-shadow:
+                0 0 0 3px rgba(128,100,232,.1);
+        }
+
+        .remember-row {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin: 15px 0;
+        }
+
+        .remember {
+            display: flex;
+
+            gap: 7px;
+
+            align-items: center;
+
+            font-size: 12px;
+
+            color: #555;
+        }
+
+        .remember input {
+            accent-color: #171717;
+        }
+
+        .forgot {
+            border: none;
+
+            background: transparent;
+
+            color: #7055dc;
+
+            font-size: 12px;
+
+            cursor: pointer;
+        }
+
+        .login-button {
+            width: 100%;
+
+            height: 50px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #171717;
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .login-button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,.2);
+        }
+
+        .signup {
+            text-align: center;
+
+            margin-top: 22px;
+
+            color: #777;
+
+            font-size: 13px;
+        }
+
+        .signup a {
+            color: #7055dc;
+
+            font-weight: 700;
+
+            text-decoration: none;
+        }
+
+        .back-home {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 18px;
+
+            color: #555;
+
+            font-size: 12px;
+
+            text-decoration: none;
+        }
+
+        .message {
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            border-radius: 8px;
+
+            font-size: 12px;
+
+            text-align: center;
+        }
+
+        .success {
+            background: #e8f8ee;
+
+            color: #16723b;
+        }
+
+        .error {
+            background: #fff0f0;
+
+            color: #c62828;
+        }
+
+        @media(max-width: 500px) {
+
+            .login-container {
+                padding: 28px 22px;
+            }
+
+            .logo-section h1 {
+                font-size: 18px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+<div class="login-container">
+
+
+    <!-- COLLEGE LOGO -->
+
+    <div class="logo-section">
+
+        <img
+            src="mrecw-logo.png"
+            alt="MRECW Logo"
+            class="college-logo"
+        >
+
+        <h1>
+            Malla Reddy Engineering College for Women
+        </h1>
+
+        <p>
+            College Event Hub
+        </p>
+
+    </div>
+
+
+    <!-- LOGIN TITLE -->
+
+    <div class="login-title">
+
+        <h2>
+            Welcome Back
+        </h2>
+
+        <p>
+            Login to access MRECW events.
+        </p>
+
+    </div>
+
+
+    <!-- LOGIN FORM -->
+
+    <form onsubmit="loginUser(event)">
+
+
+        <!-- ROLE -->
+
+        <div class="form-group">
+
+            <label>
+                Login As
+            </label>
+
+            <div class="input-box">
+
+                <i class="fa-solid fa-user-tag"></i>
+
+                <select id="role" required>
+
+                    <option value="">
+                        Select Role
+                    </option>
+
+                    <option value="student">
+                        Student
+                    </option>
+
+                    <option value="organizer">
+                        Organizer
+                    </option>
+
+                    <option value="admin">
+                        College Admin
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="form-group">
+
+            <label>
+                College Email
+            </label>
+
+            <div class="input-box">
+
+                <i class="fa-regular fa-envelope"></i>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your college email"
+                    required
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- PASSWORD -->
+
+        <div class="form-group">
+
+            <label>
+                Password
+            </label>
+
+            <div class="input-box">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- REMEMBER / FORGOT -->
+
+        <div class="remember-row">
+
+            <label class="remember">
+
+                <input
+                    type="checkbox"
+                    id="remember"
+                >
+
+                Remember me
+
+            </label>
+
+
+            <button
+                type="button"
+                class="forgot"
+                onclick="forgotPassword()">
+
+                Forgot Password?
+
+            </button>
+
+        </div>
+
+
+        <!-- LOGIN BUTTON -->
+
+        <button
+            type="submit"
+            class="login-button">
+
+            Login
+
+        </button>
+
+
+        <!-- MESSAGE -->
+
+        <div
+            id="message"
+            class="message">
+
+        </div>
+
+
+    </form>
+
+
+    <!-- SIGN UP -->
+
+    <div class="signup">
+
+        Don't have an account?
+
+        <a href="#">
+            Create Account
+        </a>
+
+    </div>
+
+
+    <a
+        href="index.html"
+        class="back-home">
+
+        ← Back to College Event Hub
+
+    </a>
+
+
+</div>
+
+
+<script>
+
+    function loginUser(event) {
+
+        event.preventDefault();
+
+
+        const role =
+            document.getElementById("role").value;
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const password =
+            document.getElementById("password").value.trim();
+
+        const message =
+            document.getElementById("message");
+
+
+        if (!role) {
+
+            showMessage(
+                "Please select your login role.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        if (!email || !password) {
+
+            showMessage(
+                "Please enter email and password.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /*
+            DEMO LOGIN
+
+            This is frontend-only.
+            Later we can connect this
+            to Firebase / MySQL / MongoDB.
+        */
+
+
+        localStorage.setItem(
+            "mrecwUser",
+            JSON.stringify({
+                email: email,
+                role: role
+            })
+        );
+
+
+        showMessage(
+            "Login successful! Redirecting...",
+            "success"
+        );
+
+
+        setTimeout(function() {
+
+            if (role === "admin") {
+
+                window.location.href =
+                    "admin-dashboard.html";
+
+            }
+
+            else if (role === "organizer") {
+
+                window.location.href =
+                    "organizer-dashboard.html";
+
+            }
+
+            else {
+
+                window.location.href =
+                    "student-dashboard.html";
+
+            }
+
+        }, 1200);
+
+    }
+
+
+    function showMessage(text, type) {
+
+        const message =
+            document.getElementById("message");
+
+        message.textContent = text;
+
+        message.className =
+            "message " + type;
+
+        message.style.display = "block";
+
+    }
+
+
+    function forgotPassword() {
+
+        const email =
+            prompt(
+                "Enter your registered college email:"
+            );
+
+
+        if (email) {
+
+            alert(
+                "Password reset request sent for:\n\n" +
+                email
+            );
+
+        }
+
+    }
+
+</script>
+
+
+<!-- Font Awesome -->
+
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js">
+</script>
+
+</body>
+</html>
+```
